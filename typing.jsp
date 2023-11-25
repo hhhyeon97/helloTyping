@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <title>타자 연습하자!</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<!--<script  src="http://code.jquery.com/jquery-latest.min.js"></script>  -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -23,12 +23,15 @@
     </div>
 
 <script>    
-/* 
+
 const sentences = [
+	'계란으로 바위치기',
+	'내 코가 석자',
+	'빛 좋은 개살구',
+	'누구에게나 바다가 있다.',
 	'다른 사람들을 평가한다면 그들을 사랑할 시간이 없다.',
-	'시간은 환상이다. 점심시간은 두 배로 그렇다.',
 	'오늘 할 수 있는 일을 내일로 미루지 마라.',
-	'니가 뭘 좋아할지 몰라서 새우버거로 주문해놨다',
+	'네가 뭘 좋아할지 몰라서 새우버거로 주문해놨다',
 	'한때 나는 편지에 모든 생을 담았다.',
 	'사랑은 규칙을 알지 못한다.',
 	'어디로 가는 개미를 본 적 있어',
@@ -39,11 +42,14 @@ const sentences = [
 	'공포를 느껴라, 그리고 그래도 도전하라.',
 	'덜 약속하고 더 해주어라',
 	'지붕은 햇빛이 밝을 때 수리해야 합니다.',
-]; */
-
-const sentences = [
-	'안녕','하이','방가'
 ];
+
+
+
+/*테스트용*/
+/* const sentences = [
+	'안녕','하이','방가'
+]; */
 
 /* 추후 새로운 문장 추가할 때 ! 방법이 여러가지
 sentences.push('새로운 문장 추가하기');
@@ -165,19 +171,21 @@ function endTyping() {
     // 결과 알림창 확인 후 화면 초기화
     //resetScreen();
 
-    
+     
   // 결과 알림창 확인 후 화면 초기화
   setTimeout(function () {
         // 알림창에 맞춘 개수와 틀린 개수 표시
-        //alert(`타자 연습이 종료되었습니다!\n맞춘 개수: ${correctCount}\n틀린 개수: ${incorrectCount}`);
-        alert(`타자 연습이 종료되었습니다!\n맞춘 개수: ${correctCount}`);
-        
+        //console.log('맞춘 개수:', correctCount);
+        alert('타자 연습이 종료되었습니다!\n맞춘 개수 : '+correctCount
+        		+'\n틀린 개수 : '+incorrectCount);
         // 결과 알림창 확인 후 화면 초기화
         resetScreen();
         // 페이지를 다시 로드하여 변수 초기화
         location.reload();
     }, 0);
- 
+  
+
+  
 
     
     
@@ -207,15 +215,11 @@ function endTyping() {
 
     // 결과 알림창 확인 후 화면 초기화
     resetScreen(); */
-    
-    
-    
-    
+
     
     
 }
-  
-  
+
  // 결과 확인 후 초기화 하기 
 function resetScreen() {
 	  correctCount = 0;
