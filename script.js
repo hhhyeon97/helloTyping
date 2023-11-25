@@ -1,30 +1,6 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>타자 연습하자!</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--<script  src="http://code.jquery.com/jquery-latest.min.js"></script>  -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-<link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
-</head>
-<body>
-  <div class="container">
-        <h3 id="typing_t">*.☆⸜(⑉˙ᗜ˙⑉)⸝♡.*</h3>
-        <button class="btn btn-secondary" id="startbtn" onclick="startTyping()">시작</button>
-        <p id="sentence">타자 연습을 시작하세요!</p>
-        <input type="text" id="userInput" placeholder="여기에 입력하세요" disabled>
-        <button class="btn btn-secondary" id="okbtn" onclick="checkTyping()">확인</button>
-        <p id="result"></p>
-        <p id="timer">남은 시간: <span id="time">60</span>초</p>
-        <!-- 결과를 표시할 div 추가 -->
-		<div id="resultContainer"></div>
-    </div>
-
-<!-- <script>    
-
+/**
+ * 
+ */
 const sentences = [
 	'계란으로 바위치기',
 	'내 코가 석자',
@@ -115,7 +91,6 @@ function startTyping() {
 
     timer = setInterval(updateTimer, 1000);
     
-    
  // 결과를 보고 난 뒤에만 "다시 시작" 버튼을 보이도록 설정
     startButton.style.display = 'none';
     
@@ -163,14 +138,7 @@ function endTyping() {
     const userInput = document.getElementById('userInput');
     userInput.disabled = true;
 
-    // 알림창에 맞춘 개수와 틀린 개수 표시
-    //alert(`타자 연습이 종료되었습니다!\n맞춘 개수: ${correctCount}\n틀린 개수: ${incorrectCount}`);
-    
-    // "다시 시작" 버튼을 보이도록 설정
     startButton.style.display = 'inline-block';
-
-    // 결과 알림창 확인 후 화면 초기화
-    //resetScreen();
 
      
   // 결과 알림창 확인 후 화면 초기화
@@ -184,40 +152,6 @@ function endTyping() {
         // 페이지를 다시 로드하여 변수 초기화
         location.reload();
     }, 0);
-  
-
-  
-
-    
-    
- /* // Ajax를 통해 서버에 결과 전송
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', '서버의_엔드포인트_URL');
-    xhr.setRequestHeader('Content-Type', 'application/json');
-
-    const data = JSON.stringify({
-        correctCount: correctCount,
-        incorrectCount: incorrectCount
-    });
-
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            console.log('결과가 성공적으로 전송되었습니다.');
-        } else {
-            console.error('결과 전송 중 오류가 발생했습니다.');
-        }
-    };
-
-    xhr.send(data);
-
-    // 결과를 동적으로 생성된 div에 표시
-    const resultContainer = document.getElementById('resultContainer');
-    resultContainer.innerHTML = `<p>타자 연습이 종료되었습니다!</p><p>맞춘 개수: ${correctCount}</p><p>틀린 개수: ${incorrectCount}</p>`;
-
-    // 결과 알림창 확인 후 화면 초기화
-    resetScreen(); */
-
-    
     
 }
 
@@ -238,7 +172,3 @@ function resetScreen() {
 	  const timeElement = document.getElementById('time');
 	  timeElement.textContent = '60';
 	}
-</script> -->
-
-</body>
-</html>
