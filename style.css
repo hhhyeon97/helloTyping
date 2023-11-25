@@ -6,10 +6,15 @@
     font-weight: normal;
     font-style: normal;
 }
-
+@font-face {
+    font-family: 'BMJUA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 body {
-    font-family: 'Arial', sans-serif;
+	font-family: 'BMJUA';
     background-color: gray;
     margin: 0;
     display: flex;
@@ -34,8 +39,6 @@ input {
 }
 
 button {
-	position:relative;
-	bottom: 10px;
     padding: 10px;
     margin-top: 10px;
     background-color: #4caf50;
@@ -43,6 +46,14 @@ button {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+}
+#startbtn{
+	margin-bottom: 15px;
+}
+#okbtn{
+	position:relative;
+	bottom: 7px;
+	margin-left:10px;
 }
 
 button:hover {
@@ -56,5 +67,5 @@ button:hover {
 }
 
 #typing_t{
-	font-family: 'MBC1961GulimM';
+	font-family: 'BMJUA';
 }
