@@ -13,7 +13,7 @@ const sentences = [
 	'사랑은 규칙을 알지 못한다.',
 	'어디로 가는 개미를 본 적 있어',
 	'단단한 땅에 물이 괸다.',
-	'다람쥐 쳇바퀴 돌듯.',
+	'다람쥐 쳇바퀴 돌 듯.',
 	'콩 심은 데 콩 나고 팥 심은 데 팥 난다.',
 	'실제의 세상은 상상의 세상보다 훨씬 작다.',
 	'공포를 느껴라, 그리고 그래도 도전하라.',
@@ -57,8 +57,13 @@ function getRandomSentence() {
   return randomSentence;
 }
      
+     
+        
 function startTyping() {
 
+// 오디오 추가 
+const audio = new Audio('200603-바빠요(192kbps).mp3');
+        audio.play();
   
   // 초기화
   correctCount = 0;
@@ -115,6 +120,29 @@ function checkTyping() {
     const currentSentence = document.getElementById('sentence').textContent;
     const resultElement = document.getElementById('result');
 
+
+ if (userInput === currentSentence) {
+        document.getElementById('userInput').value = '';
+        document.getElementById('sentence').textContent = getRandomSentence();
+        correctCount++;
+        console.log('맞춘 개수:', correctCount);
+        
+        // 맞췄을 때 배경에 무언가 표시
+        //document.body.style.background = 'url("popup.png") center/cover no-repeat fixed';
+
+        // 1초 후에 배경을 원래대로 복구
+        setTimeout(() => {
+            document.body.style.background = '';
+        }, 1000);
+    } else {
+        document.getElementById('userInput').value = '';
+        document.getElementById('sentence').textContent = getRandomSentence();
+        incorrectCount++;
+        console.log('틀린 개수:', incorrectCount);
+    }
+    
+    
+    /*
     if (userInput === currentSentence) {
         //resultElement.textContent = '정답입니다!';
         document.getElementById('userInput').value = '';
@@ -128,6 +156,8 @@ function checkTyping() {
         incorrectCount++;
         console.log('틀린 개수:', incorrectCount);
     }
+   */ 
+   
 }
 
 function endTyping() {

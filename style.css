@@ -15,7 +15,7 @@
 
 body {
 	font-family: 'BMJUA';
-    background-color: gray;
+    background-color: #8f9eb5;
     margin: 0;
     display: flex;
     align-items: center;
@@ -68,5 +68,5 @@ button:hover {
 
 #typing_t{
 	font-family: 'BMJUA';
- 	
+	margin-bottom: 20px;
 }
