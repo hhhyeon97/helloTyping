@@ -18,6 +18,8 @@
         <button class="btn btn-secondary" id="okbtn" onclick="checkTyping()">확인</button>
         <p id="result"></p>
         <p id="timer">남은 시간: <span id="time">60</span>초</p>
+        <!-- 결과를 표시할 div 추가 -->
+		<div id="resultContainer"></div>
     </div>
 
 <script>    
@@ -52,8 +54,8 @@ let currentSentenceIndex = 0;
 let timer;
 
 
-let correctCount = 0;
-let incorrectCount = 0;
+var correctCount = 0;
+var incorrectCount = 0;
 let remainingSentences = []; // 남은 구문을 저장하는 배열 추가
 
 
@@ -132,13 +134,13 @@ function checkTyping() {
     const resultElement = document.getElementById('result');
 
     if (userInput === currentSentence) {
-        resultElement.textContent = '정답입니다!';
+        //resultElement.textContent = '정답입니다!';
         document.getElementById('userInput').value = '';
         document.getElementById('sentence').textContent = getRandomSentence();
         correctCount++;
         console.log('맞춘 개수:', correctCount);
     } else {
-        resultElement.textContent = '틀렸습니다!';
+        //resultElement.textContent = '틀렸습니다!';
         document.getElementById('userInput').value = '';
         document.getElementById('sentence').textContent = getRandomSentence();
         incorrectCount++;
@@ -155,29 +157,70 @@ function endTyping() {
     userInput.disabled = true;
 
     // 알림창에 맞춘 개수와 틀린 개수 표시
-    alert(`타자 연습이 종료되었습니다!\n맞춘 개수: ${correctCount}\n틀린 개수: ${incorrectCount}`);
+    //alert(`타자 연습이 종료되었습니다!\n맞춘 개수: ${correctCount}\n틀린 개수: ${incorrectCount}`);
     
     // "다시 시작" 버튼을 보이도록 설정
     startButton.style.display = 'inline-block';
 
     // 결과 알림창 확인 후 화면 초기화
     //resetScreen();
+
     
-    
- // 결과 알림창 확인 후 화면 초기화
-    setTimeout(function () {
+  // 결과 알림창 확인 후 화면 초기화
+  setTimeout(function () {
         // 알림창에 맞춘 개수와 틀린 개수 표시
         //alert(`타자 연습이 종료되었습니다!\n맞춘 개수: ${correctCount}\n틀린 개수: ${incorrectCount}`);
         alert(`타자 연습이 종료되었습니다!\n맞춘 개수: ${correctCount}`);
         
         // 결과 알림창 확인 후 화면 초기화
         resetScreen();
+        // 페이지를 다시 로드하여 변수 초기화
+        location.reload();
     }, 0);
+ 
+
+    
+    
+ /* // Ajax를 통해 서버에 결과 전송
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '서버의_엔드포인트_URL');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    const data = JSON.stringify({
+        correctCount: correctCount,
+        incorrectCount: incorrectCount
+    });
+
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            console.log('결과가 성공적으로 전송되었습니다.');
+        } else {
+            console.error('결과 전송 중 오류가 발생했습니다.');
+        }
+    };
+
+    xhr.send(data);
+
+    // 결과를 동적으로 생성된 div에 표시
+    const resultContainer = document.getElementById('resultContainer');
+    resultContainer.innerHTML = `<p>타자 연습이 종료되었습니다!</p><p>맞춘 개수: ${correctCount}</p><p>틀린 개수: ${incorrectCount}</p>`;
+
+    // 결과 알림창 확인 후 화면 초기화
+    resetScreen(); */
+    
+    
+    
+    
+    
+    
 }
   
   
  // 결과 확인 후 초기화 하기 
 function resetScreen() {
+	  correctCount = 0;
+	  incorrectCount = 0;
+	  
 	  const userInput = document.getElementById('userInput');
 	  userInput.value = '';
 
