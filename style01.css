@@ -52,7 +52,7 @@ button {
 }
 #okbtn{
 	position:relative;
-	bottom: 7px;
+	bottom: 5px;
 	margin-left:10px;
 }
 
@@ -69,4 +69,12 @@ button:hover {
 #typing_t{
 	font-family: 'BMJUA';
 	margin-bottom: 20px;
+}
+
+#result {
+    display: none;
+}
+
+#timer{
+	margin-top: 15px;
 }

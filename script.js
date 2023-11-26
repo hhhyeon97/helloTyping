@@ -1,8 +1,9 @@
 /**
- * 
+ *  스크립트 버전 1 
  */
 const sentences = [
 	'계란으로 바위치기',
+	'헤맨 만큼 내 땅이다.',
 	'내 코가 석자',
 	'빛 좋은 개살구',
 	'누구에게나 바다가 있다.',
@@ -120,12 +121,16 @@ function checkTyping() {
     const currentSentence = document.getElementById('sentence').textContent;
     const resultElement = document.getElementById('result');
 
-
+        
+        
  if (userInput === currentSentence) {
         document.getElementById('userInput').value = '';
         document.getElementById('sentence').textContent = getRandomSentence();
+     
         correctCount++;
         console.log('맞춘 개수:', correctCount);
+
+
         
         // 맞췄을 때 배경에 무언가 표시
         //document.body.style.background = 'url("popup.png") center/cover no-repeat fixed';
@@ -139,6 +144,7 @@ function checkTyping() {
         document.getElementById('sentence').textContent = getRandomSentence();
         incorrectCount++;
         console.log('틀린 개수:', incorrectCount);
+ 
     }
     
     

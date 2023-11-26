@@ -1,36 +1,34 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>타자 연습하자!</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--<script  src="http://code.jquery.com/jquery-latest.min.js"></script>  -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-<link rel="stylesheet" href="style01.css">
-<script src="script.js"></script>
-</head>
-<body>
-  <div class="container">
-        <h3 id="typing_t">*.☆⸜(⑉˙ᗜ˙⑉)⸝♡.*</h3>
-        
-        <p id="result">
-    <span id="correctText">좋아 ! </span>
-    <span id="incorrectText">흠 ..</span>
-</p>
-        <button class="btn btn-dark" id="startbtn" onclick="startTyping()">시작</button>
-        <p id="sentence">타자 연습을 시작하세요!</p>
-        <input type="text" id="userInput" placeholder="여기에 입력하세요" disabled>
-        <button class="btn btn-dark" id="okbtn" onclick="checkTyping()">확인</button>
-        <p id="result"></p>
-        <p id="timer">남은 시간: <span id="time">60</span>초</p>
-        <!-- 결과를 표시할 div 추가 -->
-		<div id="resultContainer"></div>
-    </div>
-<!-- <script>    
+/**
+ * 스크립트 버전 2 ( 버전 1 + 랜덤 배경색상 로직 추가 ) 
+ */
+    
+    // JavaScript 코드: 페이지 로드 시 랜덤한 배경 색상 설정
+        document.addEventListener('DOMContentLoaded', function () {
+            var body = document.body;
+            var numColors = 5; // 사용 가능한 배경 색상의 총 개수
 
+            // 랜덤한 배경 색상을 선택
+            var randomColor = getRandomColor();
+
+            // 선택된 배경 색상을 body 요소에 적용
+            body.style.backgroundColor = randomColor;
+        });
+
+        // 랜덤한 HEX 색상을 반환하는 함수
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+ 
+ 
+ 
 const sentences = [
 	'계란으로 바위치기',
+	'헤맨 만큼 내 땅이다.',
 	'내 코가 석자',
 	'빛 좋은 개살구',
 	'누구에게나 바다가 있다.',
@@ -41,7 +39,7 @@ const sentences = [
 	'사랑은 규칙을 알지 못한다.',
 	'어디로 가는 개미를 본 적 있어',
 	'단단한 땅에 물이 괸다.',
-	'다람쥐 쳇바퀴 돌듯.',
+	'다람쥐 쳇바퀴 돌 듯.',
 	'콩 심은 데 콩 나고 팥 심은 데 팥 난다.',
 	'실제의 세상은 상상의 세상보다 훨씬 작다.',
 	'공포를 느껴라, 그리고 그래도 도전하라.',
@@ -85,8 +83,13 @@ function getRandomSentence() {
   return randomSentence;
 }
      
+     
+        
 function startTyping() {
 
+// 오디오 추가 
+const audio = new Audio('200603-바빠요(192kbps).mp3');
+        audio.play();
   
   // 초기화
   correctCount = 0;
@@ -119,7 +122,6 @@ function startTyping() {
 
     timer = setInterval(updateTimer, 1000);
     
-    
  // 결과를 보고 난 뒤에만 "다시 시작" 버튼을 보이도록 설정
     startButton.style.display = 'none';
     
@@ -144,6 +146,34 @@ function checkTyping() {
     const currentSentence = document.getElementById('sentence').textContent;
     const resultElement = document.getElementById('result');
 
+        
+        
+ if (userInput === currentSentence) {
+        document.getElementById('userInput').value = '';
+        document.getElementById('sentence').textContent = getRandomSentence();
+     
+        correctCount++;
+        console.log('맞춘 개수:', correctCount);
+
+
+        
+        // 맞췄을 때 배경에 무언가 표시
+        //document.body.style.background = 'url("popup.png") center/cover no-repeat fixed';
+
+        // 1초 후에 배경을 원래대로 복구
+        setTimeout(() => {
+            document.body.style.background = '';
+        }, 1000);
+    } else {
+        document.getElementById('userInput').value = '';
+        document.getElementById('sentence').textContent = getRandomSentence();
+        incorrectCount++;
+        console.log('틀린 개수:', incorrectCount);
+ 
+    }
+    
+    
+    /*
     if (userInput === currentSentence) {
         //resultElement.textContent = '정답입니다!';
         document.getElementById('userInput').value = '';
@@ -157,6 +187,8 @@ function checkTyping() {
         incorrectCount++;
         console.log('틀린 개수:', incorrectCount);
     }
+   */ 
+   
 }
 
 function endTyping() {
@@ -167,14 +199,7 @@ function endTyping() {
     const userInput = document.getElementById('userInput');
     userInput.disabled = true;
 
-    // 알림창에 맞춘 개수와 틀린 개수 표시
-    //alert(`타자 연습이 종료되었습니다!\n맞춘 개수: ${correctCount}\n틀린 개수: ${incorrectCount}`);
-    
-    // "다시 시작" 버튼을 보이도록 설정
     startButton.style.display = 'inline-block';
-
-    // 결과 알림창 확인 후 화면 초기화
-    //resetScreen();
 
      
   // 결과 알림창 확인 후 화면 초기화
@@ -188,40 +213,6 @@ function endTyping() {
         // 페이지를 다시 로드하여 변수 초기화
         location.reload();
     }, 0);
-  
-
-  
-
-    
-    
- /* // Ajax를 통해 서버에 결과 전송
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', '서버의_엔드포인트_URL');
-    xhr.setRequestHeader('Content-Type', 'application/json');
-
-    const data = JSON.stringify({
-        correctCount: correctCount,
-        incorrectCount: incorrectCount
-    });
-
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            console.log('결과가 성공적으로 전송되었습니다.');
-        } else {
-            console.error('결과 전송 중 오류가 발생했습니다.');
-        }
-    };
-
-    xhr.send(data);
-
-    // 결과를 동적으로 생성된 div에 표시
-    const resultContainer = document.getElementById('resultContainer');
-    resultContainer.innerHTML = `<p>타자 연습이 종료되었습니다!</p><p>맞춘 개수: ${correctCount}</p><p>틀린 개수: ${incorrectCount}</p>`;
-
-    // 결과 알림창 확인 후 화면 초기화
-    resetScreen(); */
-
-    
     
 }
 
@@ -242,7 +233,3 @@ function resetScreen() {
 	  const timeElement = document.getElementById('time');
 	  timeElement.textContent = '60';
 	}
-</script> -->
-
-</body>
-</html>
