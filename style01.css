@@ -17,13 +17,15 @@ body {
 	font-family: 'BMJUA';
     background-color: #8f9eb5;
     margin: 0;
-    display: flex;
+   /* display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center;*/
     height: 100vh;
 }
 
 .container {
+	position:relative;
+	top: 170px;
 	width: 500px;
     text-align: center;
     padding: 20px;
@@ -77,4 +79,21 @@ button:hover {
 
 #timer{
 	margin-top: 15px;
+}
+
+
+#audio-container {
+    position: fixed;
+    top: 10px; /* 조절 가능한 값 */
+    right: 10px; /* 조절 가능한 값 */
+    z-index: 1; /* Ensure the audio player is on top */
+}
+
+#timebtn button{
+	margin-left:10px;
+	margin-right:10px;
+	}
+
+#sentence{
+	margin-top:15px;
 }

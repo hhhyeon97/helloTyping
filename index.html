@@ -13,6 +13,11 @@
 <script src="script.js"></script>
 </head>
 <body>
+<div id="audio-container">
+<audio id="music" controls>
+  <source src="200603-바빠요(192kbps).mp3" type="audio/mp3">
+</audio>
+</div>
   <div class="container">
         <h3 id="typing_t">*.☆⸜(⑉˙ᗜ˙⑉)⸝♡.*</h3>
         
@@ -20,12 +25,20 @@
     <span id="correctText">좋아 ! </span>
     <span id="incorrectText">흠 ..</span>
 </p>
-        <button class="btn btn-dark" id="startbtn" onclick="startTyping()">시작</button>
+
+<!-- 1129추가 -->
+<div id="timebtn">
+    <!-- 버튼을 추가하여 사용자가 60초 또는 30초를 선택할 수 있게 함 -->
+    <button class="btn btn-dark" onclick="startTyping(60)">60초 시작</button>
+    <button class="btn btn-dark" onclick="startTyping(30)">30초 시작</button>
+  </div>
+
+        <!--<button class="btn btn-dark" id="startbtn" onclick="startTyping()">시작</button>-->
         <p id="sentence">타자 연습을 시작하세요!</p>
         <input type="text" id="userInput" placeholder="여기에 입력하세요" disabled>
         <button class="btn btn-dark" id="okbtn" onclick="checkTyping()">확인</button>
         <p id="result"></p>
-        <p id="timer">남은 시간: <span id="time">60</span>초</p>
+        <p id="timer"  style="display:none;" >남은 시간: <span id="time">60</span>초</p>
         <!-- 결과를 표시할 div 추가 -->
 		<div id="resultContainer"></div>
     </div>

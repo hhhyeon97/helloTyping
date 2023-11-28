@@ -23,6 +23,13 @@ const sentences = [
 	'공포를 느껴라, 그리고 그래도 도전하라.',
 	'덜 약속하고 더 해주어라',
 	'지붕은 햇빛이 밝을 때 수리해야 합니다.',
+	'건강은 제일의 재산이다.',
+	'세상에 공짜는 없다.',
+	'행동의 가치는 그 행동을 끝까지 이루는 데 있다.',
+	'일단 시작해라. 나중에 완벽해지면 된다.',
+	'내 마음에 비친 내 모습',
+	'사람들 사이에 섬이 있다.',
+	'이 우주 안 작은 파도'
 ];
 
 
@@ -38,7 +45,7 @@ sentences.push('새로운 문장 추가하기');
  
  
 let currentSentenceIndex = 0;
-let timer;
+//let timer;
 
 
 var correctCount = 0;
@@ -62,48 +69,51 @@ function getRandomSentence() {
 }
      
      
-        
-function startTyping() {
+//1129 수정 
+ let timer;
 
-// 오디오 추가 
-const audio = new Audio('200603-바빠요(192kbps).mp3');
-        audio.play();
-  
-  // 초기화
-  correctCount = 0;
-  incorrectCount = 0;
+  function startTyping(time) {
+	
+	music.play();
+	
+    // 초기화
+    correctCount = 0;
+    incorrectCount = 0;
 
-    //slice 메서드는 배열의 복사본을 만들어 반환한다. 
-    // 남은 구문 remainingSentences  초기화 (slice 메서드 사용)
-	remainingSentences = sentences.slice();
-    
-	// 엔터 키 이벤트 리스너 추가
-	document.getElementById('userInput').addEventListener('keyup', function(event) {
-	    if (event.key === 'Enter') {
-	        checkTyping();
-	    }
-	});
+    remainingSentences = sentences.slice();
 
-	const startButton = document.querySelector('#startbtn');
-    startButton.disabled = true;
+    document.getElementById('userInput').addEventListener('keyup', function(event) {
+      if (event.key === 'Enter') {
+        checkTyping();
+      }
+    });
+
+  	//const startButton = document.querySelector('#30secBtn');
+    //startButton.disabled = true; // 60초 버전 시작 시 30초 버튼 비활성화
 
     const userInput = document.getElementById('userInput');
     userInput.disabled = false;
     userInput.value = '';
     userInput.focus();
 
+	document.getElementById('result').textContent = '';
+
+    // 타이머 보이기
+    const timerElement = document.getElementById('timer');
+    timerElement.style.display = 'block';
+    
     document.getElementById('result').textContent = '';
-    document.getElementById('time').textContent = '60';
+    document.getElementById('time').textContent = time; // 선택된 시간으로 갱신
 
     const sentenceElement = document.getElementById('sentence');
     sentenceElement.textContent = getRandomSentence();
 
     timer = setInterval(updateTimer, 1000);
-    
- // 결과를 보고 난 뒤에만 "다시 시작" 버튼을 보이도록 설정
-    startButton.style.display = 'none';
-    
-}
+  }
+
+
+
+       
 
 function updateTimer() {
     const timeElement = document.getElementById('time');
