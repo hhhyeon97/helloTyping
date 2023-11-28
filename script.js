@@ -203,9 +203,14 @@ function checkTyping() {
     
     // 결과 알림창 확인 후 화면 초기화
     setTimeout(function () {
+    
+    var totalAttempts = correctCount + incorrectCount; // 전체 시도한 문제 수 계산
+	var accuracy = (correctCount / totalAttempts) * 100; // 정답률 계산
+      
       // 알림창에 맞춘 개수와 틀린 개수 표시
-      alert('타자 연습이 종료되었습니다!\n맞춘 개수 : ' + correctCount + '\n틀린 개수 : ' + incorrectCount);
-      // 결과 알림창 확인 후 화면 초기화
+      alert('타자 연습이 종료되었습니다!\n맞춘 개수 : ' + correctCount + '\n틀린 개수 : ' + incorrectCount
+      +'\n총 시도한 문제 수: ' + totalAttempts + '\n정답률: ' + accuracy.toFixed(2) + '%');
+      // 결과 알림창 확인 후 화면 초기화									// 소수점둘째자리까지
       resetScreen();
       // 페이지를 다시 로드하여 변수 초기화
         location.reload();
