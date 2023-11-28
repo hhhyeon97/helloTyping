@@ -72,9 +72,9 @@ function getRandomSentence() {
 //1129 수정 
  let timer;
 
-  function startTyping(time) {
+function startTyping(time) {
 	
-	music.play();
+	//music.play();
 	
     // 초기화
     correctCount = 0;
@@ -88,8 +88,14 @@ function getRandomSentence() {
       }
     });
 
-  	//const startButton = document.querySelector('#30secBtn');
-    //startButton.disabled = true; // 60초 버전 시작 시 30초 버튼 비활성화
+ 	const btn60 = document.getElementById('60secBtn');
+    const btn30 = document.getElementById('30secBtn');
+
+    btn60.style.display = 'none';
+    btn30.style.display = 'none';
+    
+	okBtn.disabled = false; // 시작하면 확인 버튼 활성화
+
 
     const userInput = document.getElementById('userInput');
     userInput.disabled = false;
@@ -114,7 +120,7 @@ function getRandomSentence() {
 
 
        
-
+//타이머 업데이트 
 function updateTimer() {
     const timeElement = document.getElementById('time');
     let time = parseInt(timeElement.textContent);
@@ -128,7 +134,7 @@ function updateTimer() {
     }
 }
 
-
+//타자 검사 기능
 function checkTyping() {
     const userInput = document.getElementById('userInput').value;
     const currentSentence = document.getElementById('sentence').textContent;
@@ -179,45 +185,57 @@ function checkTyping() {
    
 }
 
-function endTyping() {
-    clearInterval(timer);
-    const startButton = document.querySelector('#startbtn');
-    startButton.disabled = false;
 
+ function endTyping() {
+    clearInterval(timer);
+    
     const userInput = document.getElementById('userInput');
     userInput.disabled = true;
 
-    startButton.style.display = 'inline-block';
+    const btn60 = document.getElementById('60secBtn');
+    const btn30 = document.getElementById('30secBtn');
 
-     
-  // 결과 알림창 확인 후 화면 초기화
-  setTimeout(function () {
-        // 알림창에 맞춘 개수와 틀린 개수 표시
-        //console.log('맞춘 개수:', correctCount);
-        alert('타자 연습이 종료되었습니다!\n맞춘 개수 : '+correctCount
-        		+'\n틀린 개수 : '+incorrectCount);
-        // 결과 알림창 확인 후 화면 초기화
-        resetScreen();
-        // 페이지를 다시 로드하여 변수 초기화
+    btn60.style.display = 'inline-block';
+    btn30.style.display = 'inline-block';
+    
+    // 확인 버튼 비활성화
+    okBtn.disabled = true;
+    
+    // 결과 알림창 확인 후 화면 초기화
+    setTimeout(function () {
+      // 알림창에 맞춘 개수와 틀린 개수 표시
+      alert('타자 연습이 종료되었습니다!\n맞춘 개수 : ' + correctCount + '\n틀린 개수 : ' + incorrectCount);
+      // 결과 알림창 확인 후 화면 초기화
+      resetScreen();
+      // 페이지를 다시 로드하여 변수 초기화
         location.reload();
     }, 0);
+  }
+  
+  
+// 결과 확인 후 초기화 하기 
+  function resetScreen() {
+    correctCount = 0;
+    incorrectCount = 0;
     
-}
+    const userInput = document.getElementById('userInput');
+    userInput.value = '';
 
- // 결과 확인 후 초기화 하기 
-function resetScreen() {
-	  correctCount = 0;
-	  incorrectCount = 0;
-	  
-	  const userInput = document.getElementById('userInput');
-	  userInput.value = '';
+    const sentenceElement = document.getElementById('sentence');
+    sentenceElement.textContent = '타자 연습을 시작하세요!';
 
-	  const sentenceElement = document.getElementById('sentence');
-	  sentenceElement.textContent = '타자 연습을 시작하세요!';
+    const resultElement = document.getElementById('result');
+    resultElement.textContent = '';
 
-	  const resultElement = document.getElementById('result');
-	  resultElement.textContent = '';
+    const timeElement = document.getElementById('time');
+    timeElement.textContent = '60';
 
-	  const timeElement = document.getElementById('time');
-	  timeElement.textContent = '60';
-	}
+    const btn60 = document.getElementById('60secBtn');
+    const btn30 = document.getElementById('30secBtn');
+
+    btn60.style.display = 'inline-block';
+    btn30.style.display = 'inline-block';
+    
+      // 확인 버튼 비활성화
+    okBtn.disabled = true;
+  }
