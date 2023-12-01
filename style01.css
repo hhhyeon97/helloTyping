@@ -16,7 +16,11 @@
 body {
 	font-family: 'BMJUA';
     /*background-color: #8f9eb5;*/
-    background-image:url("back01.jpg");
+    /*background-image:url("back01.jpg");*/
+    background: rgb(238,174,202);
+	background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    background-size: cover;
+    background-repeat: no-repeat;
     margin: 0;
    /* display: flex;
     align-items: center;
@@ -24,15 +28,46 @@ body {
     height: 100vh;
 }
 
+/* 기기 크기마다 다르게 반응형 배경 주기 */
+
+/* 작은 화면에 대한 스타일 
+@media only screen and (max-width: 600px) {
+  body {
+    background-image: url('back03.jpg');
+  }
+}
+
+/* 중간 화면에 대한 스타일 
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  body {
+    background-image: url('back02.jpg');
+  }
+}
+
+/* 큰 화면에 대한 스타일 
+@media only screen and (min-width: 1025px) {
+  body {
+    background-image: url('daniele-levis-pelusi-fh_PQtxDnLc-unsplash.jpg');
+  }
+}
+*/
+
 .container {
 	position:relative;
 	top: 170px;
 	width: 500px;
     text-align: center;
     padding: 20px;
-    background-color: #fff;
+    
+    background-color: rgba(255, 255, 255, 0.4); /* 투명한 배경 */
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px); /* 블러 효과 적용 */
+    
+    /*background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
+
 }
 
 input {
