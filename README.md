@@ -53,6 +53,10 @@
 
 ![화면 캡처 2023-11-29 033748](https://github.com/hhhyeon97/GoTyping/assets/148893126/280a2a42-c2b3-40be-826e-0b2c1319c363)
 
+- 정답/오답 확인 기능 추가 <br>
+![umm02](https://github.com/hhhyeon97/GoTyping/assets/148893126/c1e3b19d-e2fa-435e-b540-b178692815c0)
+
+
 ### ps. 파비콘 추가<br>
 
 ![화면 캡처 2023-11-28 000532](https://github.com/hhhyeon97/GoTyping/assets/148893126/36f7cc4d-de05-4f08-9f1d-c8d3d3f7fbf5)
@@ -67,16 +71,5 @@
 - 구문 추가 업데이트 ✔️
 - 정답률 추가 ✔️
 - 30초 버전 선택 유무 ✔️
-- 정답/오답인 구문넘어갈 때 빨간불/초록불 추가
-- 짧은 단어 or 영어단어 타이핑 버전 추가
+- 정답/오답인 구문넘어갈 때 빨간불/초록불 추가 ✔️
 - ui 수정 ✔️
-
-
-
-
-
-
-
-
-
-
