@@ -146,3 +146,30 @@ button:hover {
 #sentence{
 	margin-top:15px;
 }
+
+12/17
+
+.animation span{
+  position: relative;
+  font-size: 30px;
+  font-weight: 600;
+}
+  
+.animation .ttt {
+  margin-bottom : 15px;	
+  margin-top : 15px;	
+  display: inline-block;
+  animation: animate 3s infinite;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotateZ(-3deg);
+  }
+  50% {
+    transform: rotateZ(3deg);
+  }
+  100% {
+    transform: rotateZ(-3deg);
+  }
+}      
