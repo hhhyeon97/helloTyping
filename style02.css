@@ -1,0 +1,5 @@
+@charset "UTF-8";
+
+
+.snow_wrap { overflow: hidden; width: 100%; height: 100vh; } 
+.snow { background: #141f3e; } 

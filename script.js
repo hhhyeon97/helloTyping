@@ -171,7 +171,6 @@ function checkTyping() {
      	resultContainer.innerHTML = '<p style="color: red;">오답입니다!</p>';
       document.querySelector('.container').style.borderColor = 'red'; // 테두리 빨간색
   
-    
         document.getElementById('userInput').value = '';
         document.getElementById('sentence').textContent = getRandomSentence();
         incorrectCount++;
@@ -257,3 +256,4 @@ function checkTyping() {
       // 확인 버튼 비활성화
     okBtn.disabled = true;
   }
+  
