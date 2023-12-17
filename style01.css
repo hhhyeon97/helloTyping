@@ -172,4 +172,23 @@ button:hover {
   100% {
     transform: rotateZ(-3deg);
   }
-}      
+}    
+
+
+ #resultContainer {
+      margin-top: 20px;
+    }
+
+    #resultContainer p {
+      margin: 5px;
+      padding: 5px;
+      display: inline-block;
+    }
+
+    #correctText {
+      color: green;
+    }
+
+    #incorrectText {
+      color: red;
+    }  

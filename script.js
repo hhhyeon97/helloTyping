@@ -29,7 +29,11 @@ const sentences = [
 	'일단 시작해라. 나중에 완벽해지면 된다.',
 	'내 마음에 비친 내 모습',
 	'사람들 사이에 섬이 있다.',
-	'이 우주 안 작은 파도'
+	'이 우주 안 작은 파도',
+	'희망은 어둠을 밝히는 등불이다.',
+	'한 시간 독서로 누그러지지 않은 걱정은 결코 없다.',
+	'이른 아침은 입에 황금을 물고 있다.',
+	'행복은 습관이다'
 ];
 
 
@@ -140,9 +144,13 @@ function checkTyping() {
     const currentSentence = document.getElementById('sentence').textContent;
     const resultElement = document.getElementById('result');
 
-        
+  var resultContainer = document.getElementById('resultContainer');
         
  if (userInput === currentSentence) {
+ 
+  		resultContainer.innerHTML = '<p style="color: green;">정답입니다!</p>';
+      document.querySelector('.container').style.borderColor = 'green'; // 테두리 초록색
+      
         document.getElementById('userInput').value = '';
         document.getElementById('sentence').textContent = getRandomSentence();
      
@@ -159,6 +167,11 @@ function checkTyping() {
             document.body.style.background = '';
         }, 1000);
     } else {
+    
+     	resultContainer.innerHTML = '<p style="color: red;">오답입니다!</p>';
+      document.querySelector('.container').style.borderColor = 'red'; // 테두리 빨간색
+  
+    
         document.getElementById('userInput').value = '';
         document.getElementById('sentence').textContent = getRandomSentence();
         incorrectCount++;
